@@ -1,14 +1,14 @@
 # Imagem baseada no node
-FROM node
+FROM node:alpine
 
 # Diretorio de trabalho
-WORKDIR /usr/src/app
+WORKDIR /usr/app
 
 # Copiando o arquivo package.json para o diretorio de trabalho
-COPY package.json .
+COPY package*.json ./
 
 # Executando um comando no workdir
-RUN npm install
+RUN yarn
 
 # Copiando todos os arquivos (index.js etc) para o workdir
 COPY . .
@@ -17,4 +17,4 @@ COPY . .
 EXPOSE 3000
 
 # Comando para iniciar a aplicação
-CMD ["node", "index.js"]
+CMD yarn start
